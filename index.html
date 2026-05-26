@@ -27,14 +27,27 @@
         header {
             text-align: center;
             color: white;
-            margin-bottom: 40px;
-            margin-top: 20px;
+            margin-bottom: 30px;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .vit-logo {
+            max-width: 250px;
+            height: auto;
+            background-color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
         }
 
         header h1 {
             font-size: 24px;
             font-weight: bold;
-            margin-top: 10px;
             letter-spacing: 0.5px;
         }
 
@@ -233,50 +246,12 @@
     </style>
 </head>
 <body>
-    <script>
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        // 1. Prevent the default page reload form behavior
-        event.preventDefault();
-
-        // 2. Open your uploaded PDF file in a brand new browser tab
-        window.open('Counselling-guide.pdf', '_blank');
-
-        /* 
-           Alternative: If you want the PDF to open directly in the 
-           SAME window instead of a new tab, use this line instead:
-           window.location.href = 'counselling-guide.pdf';
-        */
-    });
-</script>
-<script>
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Stop standard form submissions
-
-        // Get the values entered by the user
-        const enteredAppNum = document.getElementById('appNum').value.trim();
-        const enteredPassword = document.getElementById('passWord').value.trim();
-        const errorDiv = document.getElementById('errorMessage');
-
-        // Check against your specific required credentials
-        if (enteredAppNum === '2026371480' && enteredPassword === '12801467') {
-            errorDiv.textContent = ""; // Clear errors
-            window.open('Counselling-guide.pdf', '_blank'); // Opens your PDF file
-        } else {
-            // Display an alert if credentials don't match
-            errorDiv.textContent = "Invalid Application Number or Password!";
-        }
-    });
-</script>
-
 
     <!-- Header Section -->
-    <!-- Header Section -->
-<header>
-    <!-- Official VIT Logo Image Linked directly -->
-    <img src="download.png" alt="VIT Logo" class="vit-logo">
-    <h1>Online Counselling for B.Tech. Admissions (2026 - 27)</h1>
-</header>
-
+    <header>
+        <img src="download.png" alt="VIT Logo" class="vit-logo">
+        <h1>Online Counselling for B.Tech. Admissions (2026 - 27)</h1>
+    </header>
 
     <!-- Main Content Container -->
     <div class="container">
@@ -284,33 +259,34 @@
         <!-- Left Side: Login Form -->
         <div class="card login-card">
             <h2>Candidate Login</h2>
-            <form id="loginForm" action="#" method="POST">
-    <div class="form-group">
-        <input type="text" id="appNum" placeholder="Application Number" required>
-    </div>
-    <div class="form-group">
-        <input type="password" id="passWord" placeholder="Password" required>
-    </div>
-    <div class="form-group">
-        <input type="email" placeholder="Registered Email" required>
-    </div>
-    
-    <div class="captcha-container">
-        <div class="captcha-box">iMR8</div>
-        <button type="button" class="refresh-btn" title="Refresh Captcha">🔄</button>
-    </div>
-    
-    <div class="form-group">
-        <input type="text" placeholder="Enter Captcha" required>
-    </div>
+            
+            <!-- Safe form wrapper: No POST action prevents the 405 error completely -->
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="text" id="appNum" placeholder="Application Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="passWord" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Registered Email" required>
+                </div>
+                
+                <div class="captcha-container">
+                    <div class="captcha-box">iMR8</div>
+                    <button type="button" class="refresh-btn" title="Refresh Captcha">🔄</button>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" placeholder="Enter Captcha" required>
+                </div>
 
-    <!-- Error message text box added here -->
-    <div id="errorMessage" style="color: #d9534f; font-size: 14px; margin-bottom: 12px; text-align: center; font-weight: bold;"></div>
-    
-    <button type="submit" class="login-btn">Login</button>
-    <a href="#" class="forgot-password">Forgot password ?</a>
-</form>
-
+                <!-- Custom text container where wrong credentials messages pop up -->
+                <div id="errorMessage" style="color: #d9534f; font-size: 14px; margin-bottom: 12px; text-align: center; font-weight: bold;"></div>
+                
+                <button type="submit" class="login-btn">Login</button>
+                <a href="#" class="forgot-password">Forgot password ?</a>
+            </form>
         </div>
 
         <!-- Right Side: Instructions -->
@@ -334,5 +310,17 @@
 
     </div>
 
-</body>
-</html>
+    <!-- JavaScript logic controller -->
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            // Stop standard form routing to bypass GitHub 405 error
+            event.preventDefault(); 
+
+            // Extract typed entry strings
+            const enteredAppNum = document.getElementById('appNum').value.trim();
+            const enteredPassword = document.getElementById('passWord').value.trim();
+            const errorDiv = document.getElementById('errorMessage');
+
+            // Exact match user rules check
+            if (enteredAppNum === '2026371480' && enteredPassword === '12801467') {
+                errorDiv.textContent = ""; 
