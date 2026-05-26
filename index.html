@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Counselling Portal Clone</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #1e5fa9; /* Royal blue background */
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Main Content Layout */
+        .container {
+            display: flex;
+            gap: 30px;
+            max-width: 1100px;
+            width: 100%;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        /* Common Card Styles */
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+        }
+
+        /* Left Side: Login Form */
+        .login-card {
+            flex: 1;
+            max-width: 380px;
+        }
+
+        .login-card h2 {
+            text-align: center;
+            color: #444;
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #1e5fa9;
+        }
+
+        /* Captcha Styling */
+        .captcha-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .captcha-box {
+            background: #e1e1e1;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 22px;
+            font-style: italic;
+            letter-spacing: 4px;
+            padding: 8px 15px;
+            border-radius: 4px;
+            user-select: none;
+            color: #2b5797;
+            border: 1px dashed #999;
+            background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), 
+                              linear-gradient(-45deg, #ccc 25%, transparent 25%);
+            background-size: 10px 10px;
+        }
+
+        .refresh-btn {
+            background: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .refresh-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .login-btn {
+            width: 100%;
+            background-color: #0f4580;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 5px;
+        }
+
+        .login-btn:hover {
+            background-color: #0a3360;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #1e5fa9;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        /* Right Side: Instructions Panel */
+        .instructions-card {
+            flex: 2;
+            max-width: 680px;
+        }
+
+        .instructions-card h2 {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .instructions-card ol {
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .instructions-card li {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            color: #444;
+        }
+
+        .instructions-card li strong {
+            color: #000;
+        }
+
+        /* Support Section */
+        .support-section h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .support-list {
+            list-style: none;
+        }
+
+        .support-list li {
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .support-list a {
+            color: blue;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .support-list span {
+            color: blue;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 850px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .login-card, .instructions-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <!-- Place your logo img tag here if needed -->
+        <h1>Online Counselling for B.Tech. Admissions (2026 - 27)</h1>
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        
+        <!-- Left Side: Login Form -->
+        <div class="card login-card">
+            <h2>Candidate Login</h2>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <input type="text" placeholder="Application Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Registered Email" required>
+                </div>
+                
+                <!-- Captcha Graphic & Input -->
+                <div class="captcha-container">
+                    <div class="captcha-box">iMR8</div>
+                    <button type="button" class="refresh-btn" title="Refresh Captcha">🔄</button>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" placeholder="Enter Captcha" required>
+                </div>
+                
+                <button type="submit" class="login-btn">Login</button>
+                <a href="#" class="forgot-password">Forgot password ?</a>
+            </form>
+        </div>
+
+        <!-- Right Side: Instructions -->
+        <div class="card instructions-card">
+            <h2>Instructions & Guidelines</h2>
+            <ol>
+                <li>Candidates are advised to use the latest version of Google Chrome or Mozilla Firefox for a smooth counselling experience.</li>
+                <li>This is a centralized counselling process for admission to B.Tech programmes offered at VIT Group of Institutions, namely Vellore, Chennai, VIT-AP, and VIT-Bhopal campuses. Based on their rank, eligible candidates may select their preferred campus, programme, and fee category during the counselling process.</li>
+                <li><strong>Candidates must login to the counselling portal using their Application Number, password and e-mail registered during the VITEEE application process.</strong></li>
+                <li>Candidates must not share their login credentials with anyone to ensure the security and confidentiality of their application.</li>
+            </ol>
+
+            <div class="support-section">
+                <h3>Contact Support</h3>
+                <ul class="support-list">
+                    <li>• Any login issues please mail to : <a href="mailto:btechcounselling@vit.ac.in">btechcounselling@vit.ac.in</a></li>
+                    <li>• For any queries please contact : <span>044 462 77555</span></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
