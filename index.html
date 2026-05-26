@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -271,9 +272,7 @@
                 <button type="submit" class="login-btn">Login</button>
                 <a href="#" class="forgot-password">Forgot password ?</a>
             </form>
-        </div>
-
-        <div class="card instructions-card">
+        </div><div class="card instructions-card">
             <h2>Instructions & Guidelines</h2>
             <ol>
                 <li>Candidates are advised to use the latest version of Google Chrome or Mozilla Firefox for a smooth counselling experience.</li>
@@ -301,16 +300,13 @@
             const enteredEmail = document.getElementById('emailId').value.trim().toLowerCase();
             const errorDiv = document.getElementById('errorMessage');
 
+            // Matches your screen credentials rules perfectly
             if (enteredAppNum === '2026371480' && 
                 enteredPassword === '12801467' && 
                 enteredEmail === 'teotiakunal900@gmail.com') {
                 
                 errorDiv.textContent = ""; 
-                window.location.href = 'counselling.png'; 
-            } else {
-                errorDiv.textContent = "Invalid Application Number, Password, or Email!";
-            }
-        });
-    </script>
-</body>
-</html>
+                // Redirects directly to your brand new interactive dashboard web page!
+window.location.href = 'dashboard.html';} else {errorDiv.textContent = "Invalid Application Number, Password, or Email!";}});4. Click the green **Commit changes...** button at the bottom to save.
+
+---
