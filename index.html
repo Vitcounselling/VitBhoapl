@@ -233,6 +233,22 @@
     </style>
 </head>
 <body>
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        // 1. Prevent the default page reload form behavior
+        event.preventDefault();
+
+        // 2. Open your uploaded PDF file in a brand new browser tab
+        window.open('Counselling-guide.pdf', '_blank');
+
+        /* 
+           Alternative: If you want the PDF to open directly in the 
+           SAME window instead of a new tab, use this line instead:
+           window.location.href = 'counselling-guide.pdf';
+        */
+    });
+</script>
+
 
     <!-- Header Section -->
     <!-- Header Section -->
