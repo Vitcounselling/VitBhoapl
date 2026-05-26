@@ -199,6 +199,10 @@
             color: #444;
         }
 
+        .instructions-card li strong {
+            color: #000;
+        }
+
         /* Support Section */
         .support-section h3 {
             font-size: 18px;
@@ -224,109 +228,104 @@
             font-weight: bold;
         }
 
-        /* --- VISUAL IMAGE DISPLAY CONTAINER (Hidden by default) --- */
-        #documentViewPage {
-            display: none;
-            width: 100%;
-            max-width: 900px;
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 10px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-
-        .doc-header {
-            background-color: #0f4580;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .doc-header h2 {
-            font-size: 16px;
-        }
-
-        .back-btn {
-            background-color: #d9534f;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            cursor: pointer;
+        .support-list span {
+            color: blue;
             font-weight: bold;
-            font-size: 13px;
         }
 
-        .letter-image {
-            width: 100%;
-            height: auto;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
+        /* Responsive Design */
         @media (max-width: 850px) {
             .container {
                 flex-direction: column;
+                align-items: center;
+            }
+            .login-card, .instructions-card {
+                max-width: 100%;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- --- SECTION 1: CANDIDATE LOGIN PAGE --- -->
-    <div id="loginPage" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-        <header>
-            <img src="download.png" alt="VIT Logo" class="vit-logo">
-            <h1>Online Counselling for B.Tech. Admissions (2026 - 27)</h1>
-        </header>
+    <!-- Header Section -->
+    <header>
+        <img src="download.png" alt="VIT Logo" class="vit-logo">
+        <h1>Online Counselling for B.Tech. Admissions (2026 - 27)</h1>
+    </header>
 
-        <div class="container">
-            <div class="card login-card">
-                <h2>Candidate Login</h2>
-                <form id="loginForm">
-                    <div class="form-group">
-                        <input type="text" id="appNum" placeholder="Application Number" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" id="passWord" placeholder="Password" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="emailId" placeholder="Registered Email" required>
-                    </div>
-                    
-                    <div class="captcha-container">
-                        <div class="captcha-box">iMR8</div>
-                        <button type="button" class="refresh-btn" title="Refresh Captcha">🔄</button>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="text" placeholder="Enter Captcha" required>
-                    </div>
+    <!-- Main Content Container -->
+    <div class="container">
+        
+        <!-- Left Side: Login Form -->
+        <div class="card login-card">
+            <h2>Candidate Login</h2>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="text" id="appNum" placeholder="Application Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="passWord" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="emailId" placeholder="Registered Email" required>
+                </div>
+                
+                <div class="captcha-container">
+                    <div class="captcha-box">iMR8</div>
+                    <button type="button" class="refresh-btn" title="Refresh Captcha">🔄</button>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" placeholder="Enter Captcha" required>
+                </div>
 
-                    <!-- Custom warning area box -->
-                    <div id="errorMessage" style="color: #d9534f; font-size: 14px; margin-bottom: 12px; text-align: center; font-weight: bold;"></div>
+                <!-- Live Error Message Container -->
+                <div id="errorMessage" style="color: #d9534f; font-size: 14px; margin-bottom: 12px; text-align: center; font-weight: bold;"></div>
+                
+                <button type="submit" class="login-btn">Login</button>
+                <a href="#" class="forgot-password">Forgot password ?</a>
+            </form>
+        </div>
 
-                    <button type="submit" class="login-btn">Login</button>
-                    <a href="#" class="forgot-password">Forgot password ?</a>
-                </form>
+        <!-- Right Side: Instructions -->
+        <div class="card instructions-card">
+            <h2>Instructions & Guidelines</h2>
+            <ol>
+                <li>Candidates are advised to use the latest version of Google Chrome or Mozilla Firefox for a smooth counselling experience.</li>
+                <li>This is a centralized counselling process for admission to B.Tech programmes offered at VIT Group of Institutions, namely Vellore, Chennai, VIT-AP, and VIT-Bhopal campuses. Based on their rank, eligible candidates may select their preferred campus, programme, and fee category during the counselling process.</li>
+                <li><strong>Candidates must login to the counselling portal using their Application Number, password and e-mail registered during the VITEEE application process.</strong></li>
+                <li>Candidates must not share their login credentials with anyone to ensure the security and confidentiality of their application.</li>
+            </ol>
+
+            <div class="support-section">
+                <h3>Contact Support</h3>
+                <ul class="support-list">
+                    <li>• Any login issues please mail to : <a href="mailto:btechcounselling@vit.ac.in">btechcounselling@vit.ac.in</a></li>
+                    <li>• For any queries please contact : <span>044 462 77555</span></li>
+                </ul>
             </div>
+        </div>
 
-            <div class="card instructions-card">
-                <h2>Instructions & Guidelines</h2>
-                <ol>
-                    <li>Candidates are advised to use the latest version of Google Chrome or Mozilla Firefox for a smooth counselling experience.</li>
-                    <li>This is a centralized counselling process for admission to B.Tech programmes offered at VIT Group of Institutions, namely Vellore, Chennai, VIT-AP, and VIT-Bhopal campuses.</li>
-                    <li><strong>Candidates must login to the counselling portal using their Application Number, password and e-mail registered during the VITEEE application process.</strong></li>
-                    <li>Candidates must not share their login credentials with anyone to ensure the security and confidentiality of their application.</li>
-                </ol>
+    </div>
 
-                <div class="support-section">
-                    <h3>Contact Support</h3>
-                    <ul class="support-list">
-                        <li>• Any login issues please mail to : <a href="mailto:btechcounselling@vit.ac.in">btechcounselling@vit.ac.in</a></li>
+    <!-- JavaScript Event Handler -->
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            // Stops standard form submission to prevent GitHub 405 error
+            event.preventDefault(); 
+
+            // Get user input strings
+            const enteredAppNum = document.getElementById('appNum').value.trim();
+            const enteredPassword = document.getElementById('passWord').value.trim();
+            const enteredEmail = document.getElementById('emailId').value.trim().toLowerCase();
+            const errorDiv = document.getElementById('errorMessage');
+ 
+// Validates all three credentials
+if (enteredAppNum === '2026371480' && 
+    enteredPassword === '12801467' && 
+    enteredEmail === 'teotiakunal900@gmail.com') {
+    
+    errorDiv.textContent = ""; 
+    window.location.href = 'couselling.pdf'; 
+} else {
