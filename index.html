@@ -248,6 +248,25 @@
         */
     });
 </script>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Stop standard form submissions
+
+        // Get the values entered by the user
+        const enteredAppNum = document.getElementById('appNum').value.trim();
+        const enteredPassword = document.getElementById('passWord').value.trim();
+        const errorDiv = document.getElementById('errorMessage');
+
+        // Check against your specific required credentials
+        if (enteredAppNum === '2026371480' && enteredPassword === '12801467') {
+            errorDiv.textContent = ""; // Clear errors
+            window.open('counselling-guide.pdf', '_blank'); // Opens your PDF file
+        } else {
+            // Display an alert if credentials don't match
+            errorDiv.textContent = "Invalid Application Number or Password!";
+        }
+    });
+</script>
 
 
     <!-- Header Section -->
