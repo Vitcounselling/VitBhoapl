@@ -1,4 +1,3 @@
-html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,7 @@ html
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Counselling Portal Clone</title>
     <style>
+        /* Reset and Base Styles */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -14,7 +14,7 @@ html
         }
 
         body {
-            background-color: #1e5fa9;
+            background-color: #1e5fa9; /* Royal blue background */
             color: #333;
             min-height: 100vh;
             display: flex;
@@ -23,6 +23,7 @@ html
             padding: 20px;
         }
 
+        /* Header Section */
         header {
             text-align: center;
             color: white;
@@ -50,6 +51,7 @@ html
             letter-spacing: 0.5px;
         }
 
+        /* Main Content Layout */
         .container {
             display: flex;
             gap: 30px;
@@ -59,6 +61,7 @@ html
             justify-content: center;
         }
 
+        /* Common Card Styles */
         .card {
             background: white;
             border-radius: 12px;
@@ -66,6 +69,7 @@ html
             padding: 30px;
         }
 
+        /* Left Side: Login Form */
         .login-card {
             flex: 1;
             max-width: 380px;
@@ -96,6 +100,7 @@ html
             border-color: #1e5fa9;
         }
 
+        /* Captcha Styling */
         .captcha-container {
             display: flex;
             align-items: center;
@@ -168,6 +173,7 @@ html
             text-decoration: underline;
         }
 
+        /* Right Side: Instructions Panel */
         .instructions-card {
             flex: 2;
             max-width: 680px;
@@ -193,10 +199,7 @@ html
             color: #444;
         }
 
-        .instructions-card li strong {
-            color: #000;
-        }
-
+        /* Support Section */
         .support-section h3 {
             font-size: 18px;
             color: #333;
@@ -226,87 +229,172 @@ html
             font-weight: bold;
         }
 
+        /* --- DASHBOARD STYLES (Hidden by default) --- */
+        #dashboardPage {
+            display: none;
+            width: 100%;
+            max-width: 1200px;
+            background: #f4f7f6;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            color: #333;
+        }
+
+        .top-navbar {
+            background-color: #0f4580;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .top-navbar h2 {
+            font-size: 18px;
+        }
+
+        .logout-link {
+            background: #d9534f;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .info-strip {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            border: 1px solid #ddd;
+        }
+
+        .info-item strong {
+            color: #1e5fa9;
+        }
+
+        .main-workspace {
+            display: flex;
+            gap: 20px;
+        }
+
+        .choice-panel {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .choice-panel h3, .table-panel h3 {
+            margin-bottom: 15px;
+            color: #0f4580;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .form-select-group {
+            margin-bottom: 15px;
+        }
+
+        .form-select-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-select-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .add-preference-btn {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .table-panel {
+            flex: 2;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .preference-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        .preference-table th, .preference-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        .preference-table th {
+            background-color: #f2f5f8;
+        }
+
+        .delete-row-btn {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .save-lock-btn {
+            background-color: #0f4580;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
         @media (max-width: 850px) {
-            .container {
+            .container, .main-workspace {
                 flex-direction: column;
-                align-items: center;
-            }
-            .login-card, .instructions-card {
-                max-width: 100%;
             }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="download.png" alt="VIT Logo" class="vit-logo">
-        <h1>Online Counselling for B.Tech. Admissions (2026 - 27)</h1>
-    </header>
+    <!-- --- PAGE 1: LOGIN PORTAL LAYOUT --- -->
+    <div id="loginPage" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+        <header>
+            <img src="download.png" alt="VIT Logo" class="vit-logo">
+            <h1>Online Counselling for B.Tech. Admissions (2026 - 27)</h1>
+        </header>
 
-    <div class="container">
-        <div class="card login-card">
-            <h2>Candidate Login</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <input type="text" id="appNum" placeholder="Application Number" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" id="passWord" placeholder="Password" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="emailId" placeholder="Registered Email" required>
-                </div>
-                
-                <div class="captcha-container">
-                    <div class="captcha-box">iMR8</div>
-                    <button type="button" class="refresh-btn" title="Refresh Captcha">🔄</button>
-                </div>
-                
-                <div class="form-group">
-                    <input type="text" placeholder="Enter Captcha" required>
-                </div>
-
-                <div id="errorMessage" style="color: #d9534f; font-size: 14px; margin-bottom: 12px; text-align: center; font-weight: bold;"></div>
-                
-                <button type="submit" class="login-btn">Login</button>
-                <a href="#" class="forgot-password">Forgot password ?</a>
-            </form>
-        </div><div class="card instructions-card">
-            <h2>Instructions & Guidelines</h2>
-            <ol>
-                <li>Candidates are advised to use the latest version of Google Chrome or Mozilla Firefox for a smooth counselling experience.</li>
-                <li>This is a centralized counselling process for admission to B.Tech programmes offered at VIT Group of Institutions, namely Vellore, Chennai, VIT-AP, and VIT-Bhopal campuses. Based on their rank, eligible candidates may select their preferred campus, programme, and fee category during the counselling process.</li>
-                <li><strong>Candidates must login to the counselling portal using their Application Number, password and e-mail registered during the VITEEE application process.</strong></li>
-                <li>Candidates must not share their login credentials with anyone to ensure the security and confidentiality of their application.</li>
-            </ol>
-
-            <div class="support-section">
-                <h3>Contact Support</h3>
-                <ul class="support-list">
-                    <li>• Any login issues please mail to : <a href="mailto:btechcounselling@vit.ac.in">btechcounselling@vit.ac.in</a></li>
-                    <li>• For any queries please contact : <span>044 462 77555</span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); 
-
-            const enteredAppNum = document.getElementById('appNum').value.trim();
-            const enteredPassword = document.getElementById('passWord').value.trim();
-            const enteredEmail = document.getElementById('emailId').value.trim().toLowerCase();
-            const errorDiv = document.getElementById('errorMessage');
-
-            // Matches your screen credentials rules perfectly
-            if (enteredAppNum === '2026371480' && 
-                enteredPassword === '12801467' && 
-                enteredEmail === 'teotiakunal900@gmail.com') {
-                
-                errorDiv.textContent = ""; 
-                // Redirects directly to your brand new interactive dashboard web page!
-window.location.href = 'dashboard.html';} else {errorDiv.textContent = "Invalid Application Number, Password, or Email!";}});4. Click the green **Commit changes...** button at the bottom to save.
-
----
+        <div class="container">
+            <!-- Left Card: Form -->
+            <div class="card login-card">
+                <h2>Candidate Login</h2>
+                <form id="loginForm">
